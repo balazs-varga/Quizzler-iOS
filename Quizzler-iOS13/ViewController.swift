@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
     ]
     var questionNumber = 0
-    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,6 @@ class ViewController: UIViewController {
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
-        timer.invalidate()
         let userAnswer = sender.currentTitle
         let actualAnswer = quiz[questionNumber].answer
         
@@ -47,7 +45,7 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
     }
     
